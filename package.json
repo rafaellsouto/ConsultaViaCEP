@@ -1,0 +1,48 @@
+{
+    "name": "viacep-app",
+    "version": "1.0.0",
+    "description": "Aplicação para consulta de CEP utilizando a API pública ViaCEP",
+    "main": "main.js",
+    "author": "Seu Nome",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+      "start": "electron .",
+      "dist": "electron-builder",
+      "build": "electron-builder"
+    },
+    "devDependencies": {
+      "electron": "^37.2.6",
+      "electron-builder": "^26.0.12"
+    },
+    "build": {
+      "appId": "br.com.viacep.app",
+      "productName": "Consulta de CEP",
+      "directories": {
+        "output": "dist"
+      },
+      "files": [
+        "index.html",
+        "style.css",
+        "script.js",
+        "main.js",
+        "package.json"
+      ],
+      "win": {
+        "target": [
+          {
+            "target": "nsis",
+            "arch": [
+              "x64"
+            ]
+          }
+        ]
+      },
+      "nsis": {
+        "oneClick": false,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true
+      }
+    }
+  }

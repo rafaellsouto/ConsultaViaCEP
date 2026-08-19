@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Consulta de endereços através da API ViaCEP"
+    >
+
+    <title>Consulta de CEP - ViaCEP</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Cabeçalho -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">📍</span>
+            </div>
+
+            <div>
+                <h1>Consulta de CEP</h1>
+                <p>Consulte endereços rapidamente através do ViaCEP</p>
+            </div>
+        </header>
+
+
+        <!-- Card principal -->
+        <section class="search-card">
+
+            <div class="card-title">
+                <h2>Consultar endereço</h2>
+                <p>Digite um CEP brasileiro para consultar os dados do endereço.</p>
+            </div>
+
+            <form id="cepForm" autocomplete="off">
+
+                <div class="input-area">
+
+                    <label for="cep">CEP</label>
+
+                    <div class="cep-input-container">
+
+                        <input
+                            type="text"
+                            id="cep"
+                            name="cep"
+                            inputmode="numeric"
+                            maxlength="9"
+                            placeholder="00000-000"
+                            aria-describedby="cepHelp"
+                            autocomplete="postal-code"
+                        >
+
+                        <button
+                            type="submit"
+                            id="consultButton"
+                            class="button primary"
+                        >
+                            <span id="buttonText">Consultar CEP</span>
+                            <span
+                                id="loadingSpinner"
+                                class="spinner hidden"
+                            ></span>
+                        </button>
+
+                    </div>
+
+                    <small id="cepHelp">
+                        Digite os 8 números do CEP.
+                    </small>
+
+                </div>
+
+            </form>
+
+            <!-- Mensagens -->
+            <div
+                id="message"
+                class="message hidden"
+                role="alert"
+            ></div>
+
+        </section>
+
+
+        <!-- Resultado -->
+        <section
+            id="resultSection"
+            class="result-section hidden"
+        >
+
+            <div class="section-header">
+                <div>
+                    <h2>Endereço encontrado</h2>
+                    <p>Dados retornados pela API ViaCEP.</p>
+                </div>
+            </div>
+
+            <div class="address-grid">
+
+                <div class="data-card highlight">
+                    <span class="data-label">CEP</span>
+                    <strong id="resultCep">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Logradouro</span>
+                    <strong id="resultLogradouro">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Complemento</span>
+                    <strong id="resultComplemento">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Bairro</span>
+                    <strong id="resultBairro">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Localidade</span>
+                    <strong id="resultLocalidade">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">UF</span>
+                    <strong id="resultUf">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Estado</span>
+                    <strong id="resultEstado">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">Região</span>
+                    <strong id="resultRegiao">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">IBGE</span>
+                    <strong id="resultIbge">-</strong>
+                </div>
+
+                <div class="data-card">
+                    <span class="data-label">DDD</span>
+                    <strong id="resultDdd">-</strong>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="clearButton"
+                class="button secondary"
+            >
+                Limpar consulta
+            </button>
+
+        </section>
+
+
+        <!-- Histórico -->
+        <section
+            id="historySection"
+            class="history-section"
+        >
+
+            <div class="section-header history-header">
+
+                <div>
+                    <h2>Histórico de consultas</h2>
+                    <p>Últimos CEPs consultados neste dispositivo.</p>
+                </div>
+
+                <button
+                    type="button"
+                    id="clearHistoryButton"
+                    class="button danger-outline"
+                >
+                    Limpar histórico
+                </button>
+
+            </div>
+
+            <div
+                id="historyList"
+                class="history-list"
+            >
+                <!-- Histórico será inserido pelo JavaScript -->
+            </div>
+
+            <div
+                id="emptyHistory"
+                class="empty-history"
+            >
+                <span>🕘</span>
+                <p>Nenhuma consulta realizada ainda.</p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>
+                Dados fornecidos pela
+                <a
+                    href="https://viacep.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    API ViaCEP
+                </a>
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
